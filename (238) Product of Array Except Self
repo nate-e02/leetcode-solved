@@ -1,0 +1,27 @@
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        answer = []
+        num = 1
+        zero = 1 
+        for i in range(0, len(nums)):
+            num *= nums[i]
+        number = num
+        if nums[0] == 0:
+            num = 1
+            for j in range(1, len(nums)):
+                num *= nums[j]
+            answer.append(int(num))
+        else:        
+            num = (num/nums[0])
+            answer.append(int(num))
+        for x in range(1, len(nums)):
+            if nums[x] == 0:
+                for j in range(0, len(nums)):
+                    if x == j:
+                        continue
+                    zero *= nums[j]
+                answer.append(int(zero))    
+                continue
+            num = (num*nums[x-1]) / nums[x]
+            answer.append(int(num))
+        return answer        
