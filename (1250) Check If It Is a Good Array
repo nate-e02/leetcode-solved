@@ -1,0 +1,9 @@
+import math
+class Solution:
+    def isGoodArray(self, nums: List[int]) -> bool:
+        b = 0
+        for n in nums:
+            b=math.gcd(b,n)
+
+        return b==1   
+        
